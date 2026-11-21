@@ -1,0 +1,30 @@
+{
+  "clientName": "Thunder Client",
+  "environmentName": "Local - API Tareas",
+  "dateExported": "2026-11-21T07:36:44.753Z",
+  "version": "1.1",
+  "folders": [],
+  "ref": "local-api-tareas",
+  "data": [
+    {
+      "name": "baseUrl",
+      "value": "http://localhost:3000"
+    },
+    {
+      "name": "token",
+      "value": ""
+    },
+    {
+      "name": "tokenAdmin",
+      "value": ""
+    },
+    {
+      "name": "idTarea",
+      "value": ""
+    },
+    {
+      "name": "tokenInvalido",
+      "value": "esto.no.es-un-token"
+    }
+  ]
+}

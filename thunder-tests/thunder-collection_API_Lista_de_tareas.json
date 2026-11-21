@@ -1,0 +1,883 @@
+{
+  "clientName": "Thunder Client",
+  "collectionName": "API Lista de tareas",
+  "collectionId": "c6582e7f-c958-4f1e-9661-6eb46a622fe4",
+  "dateExported": "2026-11-21T07:36:44.753Z",
+  "version": "1.2",
+  "folders": [
+    {
+      "_id": "931a1cdb-5123-4550-980d-75f4e0693ade",
+      "name": "1 - Usuarios",
+      "containerId": "",
+      "created": "2026-11-21T07:36:44.753Z",
+      "sortNum": 10000
+    },
+    {
+      "_id": "d7b03b8c-d748-411e-8b71-506f7d0cb308",
+      "name": "2 - Tareas (casos OK)",
+      "containerId": "",
+      "created": "2026-11-21T07:36:44.753Z",
+      "sortNum": 20000
+    },
+    {
+      "_id": "eac42ff9-eff2-4d45-838f-04612528ace1",
+      "name": "3 - Tareas (casos de error)",
+      "containerId": "",
+      "created": "2026-11-21T07:36:44.753Z",
+      "sortNum": 30000
+    }
+  ],
+  "requests": [
+    {
+      "_id": "6325ff94-c2ad-498e-8b79-01261181baa2",
+      "colId": "c6582e7f-c958-4f1e-9661-6eb46a622fe4",
+      "containerId": "931a1cdb-5123-4550-980d-75f4e0693ade",
+      "name": "Registro usuario → 201",
+      "url": "{{baseUrl}}/api/usuarios/registro",
+      "method": "POST",
+      "sortNum": 10000,
+      "created": "2026-11-21T07:36:44.753Z",
+      "modified": "2026-11-21T07:36:44.753Z",
+      "headers": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"nombre\": \"Ana\",\n  \"email\": \"ana@mail.com\",\n  \"clave\": \"123456\"\n}",
+        "form": []
+      },
+      "auth": {
+        "type": "none"
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "201"
+        }
+      ]
+    },
+    {
+      "_id": "1ec78540-9bec-49e4-8a05-65b7aee569a7",
+      "colId": "c6582e7f-c958-4f1e-9661-6eb46a622fe4",
+      "containerId": "931a1cdb-5123-4550-980d-75f4e0693ade",
+      "name": "Registro admin → 201",
+      "url": "{{baseUrl}}/api/usuarios/registro",
+      "method": "POST",
+      "sortNum": 20000,
+      "created": "2026-11-21T07:36:44.753Z",
+      "modified": "2026-11-21T07:36:44.753Z",
+      "headers": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"nombre\": \"Admin\",\n  \"email\": \"admin@mail.com\",\n  \"clave\": \"admin123\"\n}",
+        "form": []
+      },
+      "auth": {
+        "type": "none"
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "201"
+        }
+      ]
+    },
+    {
+      "_id": "6a5f30d1-3eb1-4301-aca9-bbdf8e488098",
+      "colId": "c6582e7f-c958-4f1e-9661-6eb46a622fe4",
+      "containerId": "931a1cdb-5123-4550-980d-75f4e0693ade",
+      "name": "Registro email repetido → 400",
+      "url": "{{baseUrl}}/api/usuarios/registro",
+      "method": "POST",
+      "sortNum": 30000,
+      "created": "2026-11-21T07:36:44.753Z",
+      "modified": "2026-11-21T07:36:44.753Z",
+      "headers": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"nombre\": \"Ana\",\n  \"email\": \"ana@mail.com\",\n  \"clave\": \"123456\"\n}",
+        "form": []
+      },
+      "auth": {
+        "type": "none"
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "400"
+        }
+      ]
+    },
+    {
+      "_id": "70db40b4-c614-40d7-9df6-0bbb6e553cdf",
+      "colId": "c6582e7f-c958-4f1e-9661-6eb46a622fe4",
+      "containerId": "931a1cdb-5123-4550-980d-75f4e0693ade",
+      "name": "Registro clave corta → 400",
+      "url": "{{baseUrl}}/api/usuarios/registro",
+      "method": "POST",
+      "sortNum": 40000,
+      "created": "2026-11-21T07:36:44.753Z",
+      "modified": "2026-11-21T07:36:44.753Z",
+      "headers": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"nombre\": \"Leo\",\n  \"email\": \"leo@mail.com\",\n  \"clave\": \"12\"\n}",
+        "form": []
+      },
+      "auth": {
+        "type": "none"
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "400"
+        }
+      ]
+    },
+    {
+      "_id": "59ccc925-e5c2-4fd2-8165-190506a97f1e",
+      "colId": "c6582e7f-c958-4f1e-9661-6eb46a622fe4",
+      "containerId": "931a1cdb-5123-4550-980d-75f4e0693ade",
+      "name": "Login usuario → 200 (guarda token)",
+      "url": "{{baseUrl}}/api/usuarios/login",
+      "method": "POST",
+      "sortNum": 50000,
+      "created": "2026-11-21T07:36:44.753Z",
+      "modified": "2026-11-21T07:36:44.753Z",
+      "headers": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"email\": \"ana@mail.com\",\n  \"clave\": \"123456\"\n}",
+        "form": []
+      },
+      "auth": {
+        "type": "none"
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        },
+        {
+          "type": "set-env-var",
+          "custom": "json.token",
+          "action": "setto",
+          "value": "{{token}}"
+        }
+      ]
+    },
+    {
+      "_id": "b6d0a0a7-686d-44bf-bdc7-569963f3c0bc",
+      "colId": "c6582e7f-c958-4f1e-9661-6eb46a622fe4",
+      "containerId": "931a1cdb-5123-4550-980d-75f4e0693ade",
+      "name": "Login admin → 200 (guarda tokenAdmin)",
+      "url": "{{baseUrl}}/api/usuarios/login",
+      "method": "POST",
+      "sortNum": 60000,
+      "created": "2026-11-21T07:36:44.753Z",
+      "modified": "2026-11-21T07:36:44.753Z",
+      "headers": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"email\": \"admin@mail.com\",\n  \"clave\": \"admin123\"\n}",
+        "form": []
+      },
+      "auth": {
+        "type": "none"
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        },
+        {
+          "type": "set-env-var",
+          "custom": "json.token",
+          "action": "setto",
+          "value": "{{tokenAdmin}}"
+        }
+      ]
+    },
+    {
+      "_id": "ff805e60-ce51-4551-8832-689bd65035f7",
+      "colId": "c6582e7f-c958-4f1e-9661-6eb46a622fe4",
+      "containerId": "931a1cdb-5123-4550-980d-75f4e0693ade",
+      "name": "Login credenciales inválidas → 401",
+      "url": "{{baseUrl}}/api/usuarios/login",
+      "method": "POST",
+      "sortNum": 70000,
+      "created": "2026-11-21T07:36:44.753Z",
+      "modified": "2026-11-21T07:36:44.753Z",
+      "headers": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"email\": \"ana@mail.com\",\n  \"clave\": \"incorrecta\"\n}",
+        "form": []
+      },
+      "auth": {
+        "type": "none"
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "401"
+        }
+      ]
+    },
+    {
+      "_id": "810b82d2-c917-4075-90f8-878f5c47f81b",
+      "colId": "c6582e7f-c958-4f1e-9661-6eb46a622fe4",
+      "containerId": "931a1cdb-5123-4550-980d-75f4e0693ade",
+      "name": "Mi perfil → 200",
+      "url": "{{baseUrl}}/api/usuarios/perfil",
+      "method": "GET",
+      "sortNum": 80000,
+      "created": "2026-11-21T07:36:44.753Z",
+      "modified": "2026-11-21T07:36:44.753Z",
+      "headers": [],
+      "body": {
+        "type": "none",
+        "raw": "",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{token}}"
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ]
+    },
+    {
+      "_id": "04454dfa-786c-42f9-9123-6851b00bddf8",
+      "colId": "c6582e7f-c958-4f1e-9661-6eb46a622fe4",
+      "containerId": "d7b03b8c-d748-411e-8b71-506f7d0cb308",
+      "name": "Crear tarea → 201 (guarda idTarea)",
+      "url": "{{baseUrl}}/api/tareas",
+      "method": "POST",
+      "sortNum": 90000,
+      "created": "2026-11-21T07:36:44.753Z",
+      "modified": "2026-11-21T07:36:44.753Z",
+      "headers": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"titulo\": \"Entregar TP integrador\",\n  \"descripcion\": \"API REST con Node y Mongo\",\n  \"prioridad\": \"alta\",\n  \"fechaLimite\": \"2027-03-15\"\n}",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{token}}"
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "201"
+        },
+        {
+          "type": "set-env-var",
+          "custom": "json._id",
+          "action": "setto",
+          "value": "{{idTarea}}"
+        }
+      ]
+    },
+    {
+      "_id": "868993bd-736c-4568-ab38-fb7527539564",
+      "colId": "c6582e7f-c958-4f1e-9661-6eb46a622fe4",
+      "containerId": "d7b03b8c-d748-411e-8b71-506f7d0cb308",
+      "name": "Crear otra tarea → 201",
+      "url": "{{baseUrl}}/api/tareas",
+      "method": "POST",
+      "sortNum": 100000,
+      "created": "2026-11-21T07:36:44.753Z",
+      "modified": "2026-11-21T07:36:44.753Z",
+      "headers": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"titulo\": \"Estudiar para Redes\",\n  \"prioridad\": \"baja\",\n  \"fechaLimite\": \"2027-03-15\"\n}",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{token}}"
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "201"
+        }
+      ]
+    },
+    {
+      "_id": "a40fb0f4-20e4-4b0f-9dc5-57c66326b1ae",
+      "colId": "c6582e7f-c958-4f1e-9661-6eb46a622fe4",
+      "containerId": "d7b03b8c-d748-411e-8b71-506f7d0cb308",
+      "name": "Listar mis tareas → 200",
+      "url": "{{baseUrl}}/api/tareas",
+      "method": "GET",
+      "sortNum": 110000,
+      "created": "2026-11-21T07:36:44.753Z",
+      "modified": "2026-11-21T07:36:44.753Z",
+      "headers": [],
+      "body": {
+        "type": "none",
+        "raw": "",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{token}}"
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ]
+    },
+    {
+      "_id": "afa259af-d770-40ee-bdcd-188ce7fa981e",
+      "colId": "c6582e7f-c958-4f1e-9661-6eb46a622fe4",
+      "containerId": "d7b03b8c-d748-411e-8b71-506f7d0cb308",
+      "name": "Filtrar por prioridad → 200",
+      "url": "{{baseUrl}}/api/tareas?prioridad=alta",
+      "method": "GET",
+      "sortNum": 120000,
+      "created": "2026-11-21T07:36:44.753Z",
+      "modified": "2026-11-21T07:36:44.753Z",
+      "headers": [],
+      "body": {
+        "type": "none",
+        "raw": "",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{token}}"
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ]
+    },
+    {
+      "_id": "43f6edd7-f64b-41af-80a6-0686e65c9302",
+      "colId": "c6582e7f-c958-4f1e-9661-6eb46a622fe4",
+      "containerId": "d7b03b8c-d748-411e-8b71-506f7d0cb308",
+      "name": "Filtrar pendientes y buscar → 200",
+      "url": "{{baseUrl}}/api/tareas?completada=false&buscar=redes",
+      "method": "GET",
+      "sortNum": 130000,
+      "created": "2026-11-21T07:36:44.753Z",
+      "modified": "2026-11-21T07:36:44.753Z",
+      "headers": [],
+      "body": {
+        "type": "none",
+        "raw": "",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{token}}"
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ]
+    },
+    {
+      "_id": "22f7ccee-70f2-44d2-a870-77427716ac50",
+      "colId": "c6582e7f-c958-4f1e-9661-6eb46a622fe4",
+      "containerId": "d7b03b8c-d748-411e-8b71-506f7d0cb308",
+      "name": "Obtener por id → 200",
+      "url": "{{baseUrl}}/api/tareas/{{idTarea}}",
+      "method": "GET",
+      "sortNum": 140000,
+      "created": "2026-11-21T07:36:44.753Z",
+      "modified": "2026-11-21T07:36:44.753Z",
+      "headers": [],
+      "body": {
+        "type": "none",
+        "raw": "",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{token}}"
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ]
+    },
+    {
+      "_id": "fd7dda5b-cba9-410f-bb2d-350db3f6e142",
+      "colId": "c6582e7f-c958-4f1e-9661-6eb46a622fe4",
+      "containerId": "d7b03b8c-d748-411e-8b71-506f7d0cb308",
+      "name": "Actualizar (completar) → 200",
+      "url": "{{baseUrl}}/api/tareas/{{idTarea}}",
+      "method": "PUT",
+      "sortNum": 150000,
+      "created": "2026-11-21T07:36:44.753Z",
+      "modified": "2026-11-21T07:36:44.753Z",
+      "headers": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"completada\": true,\n  \"prioridad\": \"media\"\n}",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{token}}"
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ]
+    },
+    {
+      "_id": "f83bc233-8486-4bca-bbd0-472f49cb711e",
+      "colId": "c6582e7f-c958-4f1e-9661-6eb46a622fe4",
+      "containerId": "d7b03b8c-d748-411e-8b71-506f7d0cb308",
+      "name": "Admin lista todas → 200",
+      "url": "{{baseUrl}}/api/tareas",
+      "method": "GET",
+      "sortNum": 160000,
+      "created": "2026-11-21T07:36:44.753Z",
+      "modified": "2026-11-21T07:36:44.753Z",
+      "headers": [],
+      "body": {
+        "type": "none",
+        "raw": "",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{tokenAdmin}}"
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ]
+    },
+    {
+      "_id": "38a37930-2ac6-4024-a162-aec32f13057b",
+      "colId": "c6582e7f-c958-4f1e-9661-6eb46a622fe4",
+      "containerId": "eac42ff9-eff2-4d45-838f-04612528ace1",
+      "name": "Crear sin token → 401",
+      "url": "{{baseUrl}}/api/tareas",
+      "method": "POST",
+      "sortNum": 170000,
+      "created": "2026-11-21T07:36:44.753Z",
+      "modified": "2026-11-21T07:36:44.753Z",
+      "headers": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"titulo\": \"Sin token\",\n  \"fechaLimite\": \"2027-03-15\"\n}",
+        "form": []
+      },
+      "auth": {
+        "type": "none"
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "401"
+        }
+      ]
+    },
+    {
+      "_id": "1c6531f3-cb7e-480d-91cc-e4070e3c4444",
+      "colId": "c6582e7f-c958-4f1e-9661-6eb46a622fe4",
+      "containerId": "eac42ff9-eff2-4d45-838f-04612528ace1",
+      "name": "Crear con token inválido → 401",
+      "url": "{{baseUrl}}/api/tareas",
+      "method": "POST",
+      "sortNum": 180000,
+      "created": "2026-11-21T07:36:44.753Z",
+      "modified": "2026-11-21T07:36:44.753Z",
+      "headers": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"titulo\": \"Token falso\",\n  \"fechaLimite\": \"2027-03-15\"\n}",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{tokenInvalido}}"
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "401"
+        }
+      ]
+    },
+    {
+      "_id": "302bc14f-5a89-444f-85ad-c9236187d853",
+      "colId": "c6582e7f-c958-4f1e-9661-6eb46a622fe4",
+      "containerId": "eac42ff9-eff2-4d45-838f-04612528ace1",
+      "name": "Crear título muy corto → 400",
+      "url": "{{baseUrl}}/api/tareas",
+      "method": "POST",
+      "sortNum": 190000,
+      "created": "2026-11-21T07:36:44.753Z",
+      "modified": "2026-11-21T07:36:44.753Z",
+      "headers": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"titulo\": \"ab\",\n  \"fechaLimite\": \"2027-03-15\"\n}",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{token}}"
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "400"
+        }
+      ]
+    },
+    {
+      "_id": "1f2050fa-099e-4897-8d90-ce51fd7bc23d",
+      "colId": "c6582e7f-c958-4f1e-9661-6eb46a622fe4",
+      "containerId": "eac42ff9-eff2-4d45-838f-04612528ace1",
+      "name": "Crear prioridad inválida → 400",
+      "url": "{{baseUrl}}/api/tareas",
+      "method": "POST",
+      "sortNum": 200000,
+      "created": "2026-11-21T07:36:44.753Z",
+      "modified": "2026-11-21T07:36:44.753Z",
+      "headers": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"titulo\": \"Prioridad mala\",\n  \"prioridad\": \"urgente\",\n  \"fechaLimite\": \"2027-03-15\"\n}",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{token}}"
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "400"
+        }
+      ]
+    },
+    {
+      "_id": "e5d54a32-492d-4d2e-8ab4-efeb11f39987",
+      "colId": "c6582e7f-c958-4f1e-9661-6eb46a622fe4",
+      "containerId": "eac42ff9-eff2-4d45-838f-04612528ace1",
+      "name": "Crear fecha en el pasado → 400",
+      "url": "{{baseUrl}}/api/tareas",
+      "method": "POST",
+      "sortNum": 210000,
+      "created": "2026-11-21T07:36:44.753Z",
+      "modified": "2026-11-21T07:36:44.753Z",
+      "headers": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"titulo\": \"Fecha vieja\",\n  \"fechaLimite\": \"2020-01-01\"\n}",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{token}}"
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "400"
+        }
+      ]
+    },
+    {
+      "_id": "f15da50d-ed43-4e12-8bb4-cd989713df87",
+      "colId": "c6582e7f-c958-4f1e-9661-6eb46a622fe4",
+      "containerId": "eac42ff9-eff2-4d45-838f-04612528ace1",
+      "name": "Filtro inválido → 400",
+      "url": "{{baseUrl}}/api/tareas?completada=quizas",
+      "method": "GET",
+      "sortNum": 220000,
+      "created": "2026-11-21T07:36:44.753Z",
+      "modified": "2026-11-21T07:36:44.753Z",
+      "headers": [],
+      "body": {
+        "type": "none",
+        "raw": "",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{token}}"
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "400"
+        }
+      ]
+    },
+    {
+      "_id": "4883e2d5-cfc4-4eb0-b0c1-eacc6e340a21",
+      "colId": "c6582e7f-c958-4f1e-9661-6eb46a622fe4",
+      "containerId": "eac42ff9-eff2-4d45-838f-04612528ace1",
+      "name": "Obtener id inexistente → 404",
+      "url": "{{baseUrl}}/api/tareas/64b7f0000000000000000000",
+      "method": "GET",
+      "sortNum": 230000,
+      "created": "2026-11-21T07:36:44.753Z",
+      "modified": "2026-11-21T07:36:44.753Z",
+      "headers": [],
+      "body": {
+        "type": "none",
+        "raw": "",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{token}}"
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "404"
+        }
+      ]
+    },
+    {
+      "_id": "b9b0d949-b5bf-4bb9-a56a-40c8066ee982",
+      "colId": "c6582e7f-c958-4f1e-9661-6eb46a622fe4",
+      "containerId": "eac42ff9-eff2-4d45-838f-04612528ace1",
+      "name": "Actualizar sin campos → 400",
+      "url": "{{baseUrl}}/api/tareas/{{idTarea}}",
+      "method": "PUT",
+      "sortNum": 240000,
+      "created": "2026-11-21T07:36:44.753Z",
+      "modified": "2026-11-21T07:36:44.753Z",
+      "headers": [],
+      "body": {
+        "type": "json",
+        "raw": "{}",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{token}}"
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "400"
+        }
+      ]
+    },
+    {
+      "_id": "21b2df9b-31c5-4b1d-aaef-2536c715d393",
+      "colId": "c6582e7f-c958-4f1e-9661-6eb46a622fe4",
+      "containerId": "eac42ff9-eff2-4d45-838f-04612528ace1",
+      "name": "Actualizar id inexistente → 404",
+      "url": "{{baseUrl}}/api/tareas/64b7f0000000000000000000",
+      "method": "PUT",
+      "sortNum": 250000,
+      "created": "2026-11-21T07:36:44.753Z",
+      "modified": "2026-11-21T07:36:44.753Z",
+      "headers": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"completada\": true\n}",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{token}}"
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "404"
+        }
+      ]
+    },
+    {
+      "_id": "c5d1e8d7-a30d-4bad-a94b-ca4424588ca1",
+      "colId": "c6582e7f-c958-4f1e-9661-6eb46a622fe4",
+      "containerId": "eac42ff9-eff2-4d45-838f-04612528ace1",
+      "name": "Eliminar sin token → 401",
+      "url": "{{baseUrl}}/api/tareas/{{idTarea}}",
+      "method": "DELETE",
+      "sortNum": 260000,
+      "created": "2026-11-21T07:36:44.753Z",
+      "modified": "2026-11-21T07:36:44.753Z",
+      "headers": [],
+      "body": {
+        "type": "none",
+        "raw": "",
+        "form": []
+      },
+      "auth": {
+        "type": "none"
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "401"
+        }
+      ]
+    },
+    {
+      "_id": "ee459ab9-6415-48f5-9240-c5723b62f5d2",
+      "colId": "c6582e7f-c958-4f1e-9661-6eb46a622fe4",
+      "containerId": "eac42ff9-eff2-4d45-838f-04612528ace1",
+      "name": "Eliminar como usuario común → 403",
+      "url": "{{baseUrl}}/api/tareas/{{idTarea}}",
+      "method": "DELETE",
+      "sortNum": 270000,
+      "created": "2026-11-21T07:36:44.753Z",
+      "modified": "2026-11-21T07:36:44.753Z",
+      "headers": [],
+      "body": {
+        "type": "none",
+        "raw": "",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{token}}"
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "403"
+        }
+      ]
+    },
+    {
+      "_id": "fdbe70bd-6dd3-4d4f-b572-0d340d25109b",
+      "colId": "c6582e7f-c958-4f1e-9661-6eb46a622fe4",
+      "containerId": "eac42ff9-eff2-4d45-838f-04612528ace1",
+      "name": "Eliminar como admin → 200",
+      "url": "{{baseUrl}}/api/tareas/{{idTarea}}",
+      "method": "DELETE",
+      "sortNum": 280000,
+      "created": "2026-11-21T07:36:44.753Z",
+      "modified": "2026-11-21T07:36:44.753Z",
+      "headers": [],
+      "body": {
+        "type": "none",
+        "raw": "",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{tokenAdmin}}"
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ]
+    },
+    {
+      "_id": "c0a92d25-bb74-4ead-a9a8-e0cde6bbbaa1",
+      "colId": "c6582e7f-c958-4f1e-9661-6eb46a622fe4",
+      "containerId": "eac42ff9-eff2-4d45-838f-04612528ace1",
+      "name": "Eliminar ya eliminada → 404",
+      "url": "{{baseUrl}}/api/tareas/{{idTarea}}",
+      "method": "DELETE",
+      "sortNum": 290000,
+      "created": "2026-11-21T07:36:44.753Z",
+      "modified": "2026-11-21T07:36:44.753Z",
+      "headers": [],
+      "body": {
+        "type": "none",
+        "raw": "",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{tokenAdmin}}"
+      },
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "404"
+        }
+      ]
+    }
+  ],
+  "ref": "api-lista-de-tareas"
+}
